@@ -4,80 +4,80 @@
 <head>
     <title>Page title shown in window title</title>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="public/css/style.css" />
 </head>
 
 <body>
     <header>
-        <h1>Welcome to BurgerOnline</h1>
-        <p>Your one-stop shop for delicious burgers delivered to your door!</p>
+        <img src="background.jpg" alt="Background">
+        <h1>Welcome to Burgermeister</h1>
     </header>
 
     <main>
-        <section>
+        <section id="burgerselection"><br>
             <h2>Select your burger</h2>
             <p>Choose from our wide variety of burgers below.</p>
-            <div style="display: inline-block">
-                <h3>The fire burger</h3>
-                <img src="https://static.vecteezy.com/system/resources/previews/059/903/194/large_2x/flaming-hot-burger-delicious-cheeseburger-on-fire-with-pickles-and-sesame-bun-photo.jpg"
-                    alt="Fire burger" width="300" height="200" />
-                <ul>
-                    <li>900 kcal</li>
-                    <li>Contains fire</li>
-                </ul>
-            </div>
-            <div style="display: inline-block">
-                <h3>The semmel burger</h3>
-                <img src="https://www.livetsgoda.se/wp-content/uploads/2023/02/Burger-king.jpg" alt="Semmel burger"
-                    width="300" height="200" />
-                <ul>
-                    <li>1800 kcal</li>
-                    <li>Contains mandelmassa</li>
-                </ul>
-            </div>
-            <div style="display: inline-block">
-                <h3>The cheese burger</h3>
-                <img src="https://i.dawn.com/large/2023/08/64cdadf533a5f.jpg" alt="Cheese burger" width="300"
-                    height="200" />
-                <ul>
-                    <li>2000 kcal</li>
-                    <li>Contains cheese</li>
-                </ul>
-            </div>
-            <div style="display: inline-block">
-                <h3>The Alexander Isak burger</h3>
-                <img src="alexanderisak.png" alt="Cheese burger" width="300" height="200" />
-                <ul>
-                    <li>1500 kcal</li>
-                    <li>Contains svensk husmans</li>
-                </ul>
+            <div class="burger-grid">
+                <div class="burger">
+                    <h3>The fire burger</h3>
+                    <img src="https://static.vecteezy.com/system/resources/previews/059/903/194/large_2x/flaming-hot-burger-delicious-cheeseburger-on-fire-with-pickles-and-sesame-bun-photo.jpg"
+                        alt="Fire burger" width="270" height="18§0" />
+                    <ul>
+                        <li>900 kcal</li>
+                        <li>Contains <span class="ingredient">gluten</span></li>
+                        <li>Contains <span class="ingredient">lactose</span></li>
+                    </ul>
+                </div>
+
+
+                <div class="burger">
+                    <h3>The cheese burger</h3>
+                    <img src="https://i.dawn.com/large/2023/08/64cdadf533a5f.jpg" alt="Cheese burger" width="270"
+                        height="180" />
+                    <ul>
+                        <li>2000 kcal</li>
+                        <li>Contains <span class="ingredient">gluten</span></li>
+                        <li>Contains <span class="ingredient">lactose</span></li>
+                    </ul>
+                </div>
+                <div class="burger">
+                    <h3>The Alexander Isak burger</h3>
+                    <img src="alexanderisak.png" alt="Cheese burger" width="270" height="180" />
+                    <ul>
+                        <li>1500 kcal</li>
+                        <li>Contains <span class="ingredient">gluten</span></li>
+                        <li>Contains <span class="ingredient">lactose</span></li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <section>
+        <section id="customerinformation"><br>
             <h2>Customer Information</h2>
             <p>Please enter your name and delivery details.</p>
             <h3>Delivery Information</h3>
-            <p>
+            <div>
                 <label for="fullname">Full name</label><br>
                 <input type="text" id="fullname" name="fn" required="required" placeholder="Full name">
-            </p>
+            </div><br>
 
-            <p>
+            <div>
                 <label for="address">E-mail</label><br>
                 <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
-            </p>
+            </div><br>
 
-            <p>
+            <div>
                 <label for="street">Street</label><br>
                 <input type="text" id="street" name="st" required="required" placeholder="Street address">
-            </p>
+            </div><br>
 
-            <p>
+            <div>
                 <label for="house">House</label><br>
                 <input type="text" id="house" name="ho" required="required" placeholder="House number">
-            </p>
+            </div><br>
 
-            <p>
+            <div>
                 <label for="paymentmethod">Payment method</label><br>
                 <select id="paymentmethod" name="rcp">
                     <option selected="selected">Mastercard</option>
@@ -85,27 +85,28 @@
                     <option>Amex</option>
                     <option>Swish</option>
                 </select>
-            </p>
-            </p>
-            <label for="choosegender">Choose your gender:</label><br>
+            </div><br>
+            <div>
+                <label for="choosegender">Choose your gender:</label><br>
 
-            <input type="radio" id="Male" name="cg" checked="checked">
-            <label for="male">Male</label><br>
+                <input type="radio" id="male" name="cg" checked="checked">
+                <label for="male">Male</label><br>
 
-            <input type="radio" id="Feale" name="cg">
-            <label for="Female">Female</label><br>
+                <input type="radio" id="female" name="cg">
+                <label for="female">Female</label><br>
 
-            <input type="radio" id="Donotwishtoprovide" name="cg">
-            <label for="Do not wish to provide">Do not wish to provide</label><br>
+                <input type="radio" id="Do not wish to provide" name="cg">
+                <label for="Do not wish to provide">Do not wish to provide</label><br>
 
-            </p>
-            </p>
-            <button type="submit">
-                <img src="placeorder.jpg" alt="placeorder" width="20" height="20">
-                Place Order
-            </button>
-            
+            </div>
         </section>
+
+        <button type="submit">
+            <img src="placeorder.jpg" alt="Place Order" width="20" height=20>
+            Place Order
+        </button>
+
+
     </main>
 
     <footer>
