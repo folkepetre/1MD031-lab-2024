@@ -2,15 +2,31 @@
     <div id="orders">
       <div id="orderList">
         <div v-for="(order, key) in orders" v-bind:key="'order'+key">
-          #{{ key }}: {{ order.orderItems.join(", ") }}
+          #{{ key }}: 
+          <div v-for="items in order.orderItems">
+            <span v-for="(amount, name) in items" :key="name">
+              {{ name }}: {{ amount }},
+            </span>
+            
+          </div>
+          <div class="orderDetails">
+            {{ order.details.fullName }}
+            ({{ order.details.email }},
+            {{ order.details.paymentMethod }},
+            {{ order.details.gender }})
+          </div>
+          <hr>
         </div>
         <button v-on:click="clearQueue">Clear Queue</button>
       </div>
       <div id="dots">
-          <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}" v-bind:key="'dots' + key">
-            {{ key }}
-          </div>
+        <div v-for="(order, key) in orders" 
+          v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}" v-bind:key="'dot'+key"
+          >
+          T
+        </div>
       </div>
+      
     </div>
   </template>
   <script>
@@ -22,7 +38,12 @@
     data: function () {
       return {
         orders: null,
+        location: { x: 0,
+            y: 0
+          }
       }
+      
+
     },
     created: function () {
       socket.on('currentQueue', data =>
@@ -34,10 +55,16 @@
       },
       changeStatus: function(orderId) {
         socket.emit('changeStatus', {orderId: orderId, status: "Annan status"});
-
-      }
+      },
+      updateLocation: function(event) {
+        var offset = {x: event.currentTarget.getBoundingClientRect().left,
+                      y: event.currentTarget.getBoundingClientRect().top};
+        this.location.x = event.clientX - 10 - offset.x;
+        this.location.y = event.clientY - 10 - offset.y;  
+      
     }
   }
+}
   </script>
   <style>
   #orderList {
@@ -69,5 +96,10 @@
     height:20px;
     text-align: center;
   }
-  </style>
+  .orderDetails{
+    font-style: italic;
+    font-size: 11pt;
+  }
   
+
+  </style>

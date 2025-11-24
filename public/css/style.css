@@ -4,9 +4,6 @@ body {
     font-family: 'Times New Roman';
 }
 
-
-
-
 h1 {
     font-family: 'Agbalumo';
     font-size: 36pt;
@@ -14,18 +11,18 @@ h1 {
 
 main,
 header {
-    max-width: 60rem;
+    max-width: 100%;
 }
 
-main {
-
-}
+main {}
 
 .ingredient {
     font-weight: bold;
 }
 
-section {}
+section {
+    
+}
 
 #burgerselection {
     background-color: black;
@@ -40,7 +37,7 @@ section {}
     background-color: white;
     color: black;
     border: 3px dashed black;
-    margin: 0px 20px; 
+    margin: 0px 20px;
     padding: 20px;
 
 }
@@ -52,14 +49,21 @@ button {
 button:hover {
     background-color: rgb(106, 251, 43);
 }
+
+#burgerselection ul {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
 .burger-grid {
     display: grid;
     grid-template-columns: repeat(3, 33%);
- 
+
 }
 
 .burger {
     margin: 10px;
+
 }
 
 header {
@@ -68,16 +72,18 @@ header {
     overflow: hidden;
 
 }
-header img{
-    
-    opacity: 0.5;
-    width: calc(100% - 40px);
-    height: auto
 
+header img {
+
+    opacity: 0.5;
+    width: 100%;
+    height: auto
 }
-header h1{
+
+header h1 {
     position: absolute;
-    padding: 180px;
-    margin-top: -480px;
-    
+    padding: 0px;
+    margin-top: -500px;
+    margin-left: 350px;
+
 }
