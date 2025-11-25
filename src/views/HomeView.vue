@@ -24,8 +24,8 @@
             <p>Please indicate your delivery spot on the map and fill in your details below.</p>
             <h3>Delivery Information</h3>
 
-        <div id="map-container" @click="setLocation">
-            <img class="map" src="/img/polacks.jpg" alt="Map of Uppsala">
+        <div id="map-container">
+            <img class="map" src="/img/polacks.jpg" alt="Map of Uppsala" @click="setLocation">
 
             <div v-if="location" class="dot" 
                 v-bind:style="{ left: location.x + 'px', top: location.y + 'px' }">
@@ -43,18 +43,6 @@
                     <label for="email">E-mail</label><br>
                     <input type="email" id="email" v-model="em" required="required" placeholder="E-mail address">
                 </div><br>
-
-                <!--
-                <div>
-                    <label for="street">Street</label><br>
-                    <input type="text" id="street" v-model="st" required="required" placeholder="Street address">
-                </div><br>
-
-                <div>
-                    <label for="house">House</label><br>
-                    <input type="text" id="house" v-model="ho" required="required" placeholder="House number">
-                </div><br>
-                -->
 
                 <div>
                     <label for="paymentmethod">Payment method</label><br>
@@ -81,7 +69,7 @@
                 </div>
                 </div>
 
-                <button type="submit" v-on:click="customerInfo">
+                <button class="submitButton" v-on:click="customerInfo">
                     <img src="/placeorder.jpg" alt="Place Order" width="20" height=20>
                         Place Order
                 </button>
@@ -108,22 +96,6 @@ import io from 'socket.io-client'
 
 const socket = io("localhost:3000");
 
-//function MenuItem(bn, img, kcal, gluten, lactose) {
-//    this.name = bn; 
-//    this.img = img;
-//    this.kcal = kcal;
-//    this.gluten= gluten
-//    this.lactose = lactose; 
-// };
-
-// const burgers = [
-//    new MenuItem("Fire burger", "https://static.vecteezy.com/system/resources/previews/059/903/194/large_2x/flaming-hot-burger-delicious-cheeseburger-on-fire-with-pickles-and-sesame-bun-photo.jpg", 1200, true, false),
-//    new MenuItem("Cheese burger", "https://i.dawn.com/large/2023/08/64cdadf533a5f.jpg", 2000, true, true),
-//    new MenuItem("Alexander Isak burger", "alexanderisak.png", 850, false, true)
-// ];
-
-
-
 export default {
   name: 'HomeView',
   components: {
@@ -135,10 +107,8 @@ export default {
       
       fn: '',      // full name
       em: '',      // email
-      //st: '',      // street
-      //ho: '',      // house
       rcp: 'Mastercard', // payment method 
-      cg: '',    // gender
+      cg: 'Male',    // gender
 
       orderedBurgers:{
 
@@ -151,31 +121,16 @@ export default {
     getOrderNumber: function () {
       return Math.floor(Math.random()*100000);
     },
-    addOrder: function (event) {
-      var offset = {x: event.currentTarget.getBoundingClientRect().left,
-                    y: event.currentTarget.getBoundingClientRect().top};
-
-                    const clickX = event.clientX - 10 - offset.x;
-                    const clickY = event.clientY - 10 - offset.y;
-
-                    this.location.x = clickX;
-                    this.location.y = clickY;
-                    console.log("Order added at: ", clickX, clickY)
-                    
-    },
+    
     
     setLocation: function (event) {
       var offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
 
-                    const clickX = event.clientX - 10 - offset.x;
-                    const clickY = event.clientY - 10 - offset.y;
+                     this.location.x = event.clientX - 10 - offset.x;
+                     this.location.y = event.clientY - 10 - offset.y;
 
-                    this.location.x = clickX;
-                    this.location.y = clickY;
-                    
-                   
-                    console.log("Location set to: ", clickX, clickY)
+                    console.log("Location set to: ", this.location.x, this.location.y)
     },
     
     customerInfo: function(){
@@ -184,8 +139,6 @@ export default {
     console.log('Customer Information:');
     console.log('Full name:', this.fn);
     console.log('Email:', this.em);
-    //console.log('Street:', this.st);
-    //console.log('House:', this.ho);
     console.log('Payment method:', this.rcp);
     console.log('Gender:', this.cg);
     console.log('Order:', this.orderedBurgers);
@@ -203,7 +156,6 @@ export default {
                         }
                  );
                  
-
   },
   addToOrder: function (event) {
   this.orderedBurgers[event.name] = event.amount;
@@ -213,11 +165,6 @@ export default {
 </script>
 
 <style>
-  /*#map {
-    width: 300px;
-    height: 300px;
-    background-color: red;
-  }*/
 
   @import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Cormorant:wght@700&display=swap');
 
@@ -288,6 +235,13 @@ button:hover {
     background-color: rgb(106, 251, 43);
 }
 
+.submitButton {
+    margin-top: 30px;
+    padding: 5px;
+    
+}
+
+
 .addButton, .removeButton{
     padding: 5px 10px;
     
@@ -333,8 +287,8 @@ header img {
 
 header h1 {
     position: absolute;
-    margin-top: -720px;
-    margin-left: 560px;
+    margin-top: -520px;
+    margin-left: 300px;
 
 }
 footer{
@@ -345,14 +299,13 @@ footer{
 
 #map-container {
   position: relative;
-  overflow:scroll
+  overflow:scroll;
+  width: 100%;
+  height: 600px
 }
 
 .map {
-    
-    max-height: 1078px;
-    max-width: 1920px;
-    
+    display: block;  
 }
 
 .dot {

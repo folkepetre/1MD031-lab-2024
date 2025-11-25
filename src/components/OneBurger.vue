@@ -2,16 +2,16 @@
   <div class="burger">
     <h3> {{ burger.name }}</h3>
     <img v-bind:src= "burger.img" 
-      alt="burger" width="500" height="380" />
+      alt="burger" width="360" height="280" />
     <ul>
       <li> {{ burger.kcal }} kcal</li>
       <li v-if="burger.gluten">Contains <span class="ingredient">gluten</span></li>
-      <li v-if="burger.gluten">Contains <span class="ingredient">lactose</span></li>
+      <li v-if="burger.lactose">Contains <span class="ingredient">lactose</span></li>
     </ul>
-    <div>
-      <button class="addButton" v-on:click="addBurger">+</button>
+    <div class="orderButtons">
       <button class="removeButton"v-on:click="amountOrdered > 0 && amountOrdered--">-</button>
-      <p>Amount ordered: {{ amountOrdered }}</p>
+      {{ amountOrdered }}
+       <button class="addButton" v-on:click="addBurger">+</button>
   </div>
   </div>
 </template>
@@ -44,10 +44,21 @@ export default {
 <style scoped>
 .burger {
     margin: 10px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    
 
 }
 .ingredient {
     font-weight: bold;
+}
+
+.orderButtons{
+  margin-top: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 </style>

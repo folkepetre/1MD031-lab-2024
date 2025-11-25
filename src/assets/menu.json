@@ -1,6 +1,6 @@
 [{
     "name": "Fire burger", 
-    "kcal": 1200, 
+    "kcal":900, 
     "lactose": false, 
     "gluten": true,
         "img": "https://static.vecteezy.com/system/resources/previews/059/903/194/large_2x/flaming-hot-burger-delicious-cheeseburger-on-fire-with-pickles-and-sesame-bun-photo.jpg"
@@ -14,7 +14,7 @@
 },
 {
     "name": "Chicken burger", 
-    "kcal": 850, 
+    "kcal": 1250, 
     "lactose": true, 
     "gluten": true,
     "img": "chickenburger.jpg"
