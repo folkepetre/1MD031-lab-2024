@@ -9,9 +9,9 @@
       <li v-if="burger.lactose">Contains <span class="ingredient">lactose</span></li>
     </ul>
     <div class="orderButtons">
-      <button class="removeButton"v-on:click="amountOrdered > 0 && amountOrdered--">-</button>
+      <button id="removeButton"v-on:click="amountOrdered > 0 && amountOrdered--">-</button>
       {{ amountOrdered }}
-       <button class="addButton" v-on:click="addBurger">+</button>
+       <button id="addButton" v-on:click="addBurger">+</button>
   </div>
   </div>
 </template>
@@ -48,7 +48,6 @@ export default {
     display: flex;
     flex-direction: column;
     
-
 }
 .ingredient {
     font-weight: bold;
@@ -59,6 +58,7 @@ export default {
   display: flex;
   gap: 8px;
   align-items: center;
+  padding: 0px 115px;
 }
 
 </style>

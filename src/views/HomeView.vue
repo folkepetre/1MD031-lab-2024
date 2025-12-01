@@ -242,12 +242,12 @@ button:hover {
 }
 
 
-.addButton, .removeButton{
+.orderButtons button {
     padding: 5px 10px;
     
 
 }
-.removeButton:hover {
+#removeButton:hover {
     background-color: rgb(251, 43, 43);
 }
 
@@ -289,12 +289,10 @@ header h1 {
     position: absolute;
     margin-top: -520px;
     margin-left: 300px;
-
 }
 footer{
     font-family: 'Times New Roman';
     font-size: 14pt;
-    font-weight: bold;
 }
 
 #map-container {
